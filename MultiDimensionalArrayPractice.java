@@ -22,6 +22,8 @@ public class MultiDimensionalArrayPractice {
 		}
 		
 		// names[row].length is "How many elements are inside THIS row?"
+		// inner loop = prints row
+		// outer loop = how many rows
 		
 	}
 }
