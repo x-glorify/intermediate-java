@@ -56,6 +56,13 @@ public class GUIReview extends JFrame{
 		add(btndelete).setBounds(50, 440, 100, 25);
 		btndelete.setForeground(Color.white);
 		btndelete.setBackground(Color.black);
+
+		btndelete.addActionListener(e -> {
+			txtname.setText("");
+			txtemail.setText("");
+			txtaddress.setText("");
+			txtnumber.setText("");
+		});
 		
 		JButton btnupdate = new JButton("Update");
 		add(btnupdate).setBounds(170, 440, 100, 25);
