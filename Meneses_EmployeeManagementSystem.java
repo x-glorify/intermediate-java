@@ -235,7 +235,7 @@ public class Meneses_EmployeeManagementSystem extends JFrame{
 			
 			
 			
-			
+			//table setup
 			String[] cols = {"Employee ID", "Name", "Birthday", "Age", "Civil Status", "Nationality",
 							"Gender", "Contact Number", "Email", "Department", "Job Title"};
 			
@@ -254,6 +254,8 @@ public class Meneses_EmployeeManagementSystem extends JFrame{
 			scrollPane.setBounds(20, 250, 800, 200);
 			add(scrollPane);
 			loadTable();
+
+		
 			
 			// fills the text fields from a selected row
 			table.addMouseListener(new MouseAdapter(){
@@ -296,7 +298,9 @@ public class Meneses_EmployeeManagementSystem extends JFrame{
 		setVisible(true);
 		
 	}
-	
+
+
+	//add employee function
 	void recordData() {
 		try {
 			FileWriter fw = new FileWriter(FILE_NAME, true);
@@ -314,7 +318,7 @@ public class Meneses_EmployeeManagementSystem extends JFrame{
 	}
 	
 	
-	
+	// delete a record from a row function
 	void deleteRecord() {
 		int selectedRow = table.getSelectedRow();
 		if (selectedRow == -1) {
@@ -351,6 +355,9 @@ public class Meneses_EmployeeManagementSystem extends JFrame{
 			JOptionPane.showMessageDialog(null, e);
 		}
 		
+
+		// read then write
+
 		
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))) {
 			
@@ -372,7 +379,9 @@ public class Meneses_EmployeeManagementSystem extends JFrame{
 		
 	}
 	
-	
+
+
+	// edit or update a record function
 	void updateRecord() {
 		int selectedRow = table.getSelectedRow();
 		if (selectedRow == -1) {
@@ -407,7 +416,9 @@ public class Meneses_EmployeeManagementSystem extends JFrame{
 			JOptionPane.showMessageDialog(null, e);
 		}
 		
-		
+
+
+		//rewrite the file with the updated record
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))) {
 			
 			for (String record : lines) {
