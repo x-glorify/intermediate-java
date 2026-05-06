@@ -462,6 +462,7 @@ public class Meneses_EmployeeManagementSystem extends JFrame{
 		txtname.setText("");
 		txtbirth.setText("");
 		txtage.setText("");
+		comcivilstat.setSelectedIndex(0);
 		txtnationality.setText("");
 		bg.clearSelection();
 		txtnumber.setText("");
