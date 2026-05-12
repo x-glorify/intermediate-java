@@ -399,7 +399,7 @@ public class Meneses_EmployeeManagementSystem extends JFrame{
 				if (rowIndex == selectedRow) {
 					String updateRecord = empID + DELIMITER + name + DELIMITER + birth + DELIMITER + age + DELIMITER 
 							+ civilstat + DELIMITER + nationality + DELIMITER + gender + DELIMITER + number
-							+ DELIMITER + email + DELIMITER + department + DELIMITER + position + "\n";
+							+ DELIMITER + email + DELIMITER + department + DELIMITER + position;
 							
 					lines.add(updateRecord);		
 							
