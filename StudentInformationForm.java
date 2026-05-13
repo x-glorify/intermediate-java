@@ -1,7 +1,8 @@
-package Meneses107;
+package CCE107Activities;
 import javax.swing.*;
 import java.util.*;
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.table.*;
 import java.io.*;
 public class StudentInformationForm extends JFrame{
@@ -70,6 +71,8 @@ public class StudentInformationForm extends JFrame{
 			course = txtcourse.getText();
 			section = txtsection.getText();
 			
+			add();
+			refresh();
 			
 			
 		});
@@ -79,10 +82,14 @@ public class StudentInformationForm extends JFrame{
 			course = txtcourse.getText();
 			section = txtsection.getText();
 			
+			update();
+			refresh();
+			
 		});
 
 		btndelete.addActionListener(e -> {
-	
+			delete();
+			refresh();
 		});
 
 		btnclear.addActionListener(e -> {
@@ -106,17 +113,29 @@ public class StudentInformationForm extends JFrame{
 		table.getTableHeader().setBackground(Color.black);
 		
 		scroll = new JScrollPane(table);
-		scroll.setBounds(15, 20, 410, 256);
+		scroll.setBounds(18, 10, 410, 256);
 		add(scroll);
+		refresh();
+		
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				int selectedrow = table.getSelectedRow();
+				
+				if (selectedrow != -1) {
+					txtname.setText(model.getValueAt(selectedrow,  0).toString());
+					txtcourse.setText(model.getValueAt(selectedrow,  1).toString());
+					txtsection.setText(model.getValueAt(selectedrow,  2).toString());
+				}
+			}
+			
+			
+		});
 		
 		
 		
 		
 		
-		
-		
-		
-		
+		setTitle("Student Information Form");
 		getContentPane().setBackground(Color.black);
 		setLayout(null);
 		setSize(458, 417);
@@ -199,7 +218,7 @@ public class StudentInformationForm extends JFrame{
 	
 	
 	void delete() {
-		int selectedrow = 0;
+		int selectedrow = table.getSelectedRow();
 		
 		if (selectedrow == -1) {
 			JOptionPane.showMessageDialog(null, "Select a record to delete.");
@@ -224,6 +243,8 @@ public class StudentInformationForm extends JFrame{
 					temprecord.add(line);
 					rowIndex++;
 				}
+				
+				
 			}
 			
 			
@@ -258,8 +279,15 @@ public class StudentInformationForm extends JFrame{
 	
 	void refresh() {
 		model.setRowCount(0);
-		String line;
+		
+		File file = new File(filename);
+		if (!file.exists()) {
+			return;
+		}
+		
+		
 		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+			String line;
 			while ((line = br.readLine()) != null) {
 				String[] row = line.split(delimiter);
 				model.addRow(row);
