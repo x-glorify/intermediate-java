@@ -238,10 +238,10 @@ public class FoodOrderSystemGUI extends JFrame{
 					txtquantity.setText(model.getValueAt(row, 3).toString());
 					ordertype = model.getValueAt(row, 4).toString();
 					
-					if (rbtn1.isSelected()) {
-						ordertype = "Dine In";
+					if (ordertype.equals("Dine In")) {
+						rbtn1.isSelected();
 					} else {
-						ordertype = "Takeout";
+						rbtn2.isSelected();
 					}
 					
 					txttotal.setText(model.getValueAt(row, 5).toString());
