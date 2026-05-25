@@ -233,10 +233,10 @@ public class CarRentalSystem extends JFrame{
 					txtnumdays.setText(model.getValueAt(row, 3).toString());
 					insurance = model.getValueAt(row, 4).toString();
 					
-					if(rb1.isSelected()) {
-						insurance = "With Insurance";
+					if(insurance.equals("With Insurance") {
+						rb1.isSelected();
 					} else {
-						insurance = "Without Insurance";
+						rb2.isSelected();
 					}
 					
 					txttotalcost.setText(model.getValueAt(row, 5).toString());
