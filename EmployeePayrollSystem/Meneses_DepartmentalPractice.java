@@ -145,6 +145,13 @@ public class Meneses_DepartmentalPractice extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					int selectedrow = table.getSelectedRow();
+					if (selectedrow == -1) {
+						JOptionPane.showMessageDialog(null, "Please choose a record to update.");
+						return;
+					}
+
+					
 					if (txtID.getText().isEmpty() || txtname.getText().isEmpty() || txtposition.getText().isEmpty() || 
 						txthours.getText().isEmpty() || txtrate.getText().isEmpty() || txtpaydate.getText().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Please fill in all fields!");
@@ -184,6 +191,11 @@ public class Meneses_DepartmentalPractice extends JFrame{
 		
 		
 		btndelete.addActionListener(e->{
+			int selectedrow = table.getSelectedRow();
+					if (selectedrow == -1) {
+						JOptionPane.showMessageDialog(null, "Please choose a record to delete.");
+						return;
+					}
 			deletePayroll();
 			loadTable();
 			
@@ -248,12 +260,6 @@ public class Meneses_DepartmentalPractice extends JFrame{
 			
 			private void updatePayroll(Payroll pay) {
 				int selectedrow = table.getSelectedRow();
-				if (selectedrow == -1) {
-					JOptionPane.showMessageDialog(null, "Select a record to update.");
-					return;
-				}
-				
-				
 				records = new ArrayList<>();
 				try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
 					String line;
@@ -300,12 +306,6 @@ public class Meneses_DepartmentalPractice extends JFrame{
 			
 			private void deletePayroll() {
 				int selectedrow = table.getSelectedRow();
-				if (selectedrow == -1) {
-					JOptionPane.showMessageDialog(null, "Select a record to update.");
-					return;
-				}
-				
-				
 				int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this record?",
 														"Confirm", JOptionPane.YES_NO_OPTION);
 				if (confirm != JOptionPane.YES_OPTION) return;
