@@ -334,7 +334,6 @@ public class StudentGradeRecord extends JFrame{
 
 
 	private boolean duplicateID() {
-		model.setRowCount(0);
 		File file = new File(FILENAME);
 		if(!file.exists()) return false;
 
@@ -342,8 +341,6 @@ public class StudentGradeRecord extends JFrame{
 		String line;
 			while((line = br.readLine()) != null) {
 				String[] rows = line.split(DELIMITER);
-				model.addRow(rows);
-
 				if (rows[0].equals(txtID.getText()) return true;
 			}
 			
