@@ -163,6 +163,13 @@ try {
 						JOptionPane.showMessageDialog(null, "Date must be in format YYYY-MM-DD");
 						return;
 					}
+
+
+					if(duplicateID()) {
+						JOptionPane.showMessageDialog(null, "This sales ID already exists.");
+						return;
+						
+					}
 					
 					int price = Integer.parseInt(txtprice.getText());
 					int sold = Integer.parseInt(txtsold.getText());
