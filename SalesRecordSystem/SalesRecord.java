@@ -357,7 +357,7 @@ try {
 			String line;
 			while((line = br.readLine()) != null) {
 				String[] rows = line.split(DELIMITER);
-				if(rows[0].equals(txtID.getText()) return true;
+				if(rows[0].equals(txtID.getText())) return true;
 			}
 
 			
