@@ -97,7 +97,11 @@ public class StudentGradeRecord extends JFrame{
 							JOptionPane.showMessageDialog(null, "Please fill in all the fields!");
 							return;
 						}
-					
+
+					if (duplicateID()) {
+						JOptionPane.showMessageDialog(null, "This student ID already exits.");
+						return;
+					}
 					
 					int prelimgr = Integer.parseInt(txtprelim.getText());
 					int midtermgr = Integer.parseInt(txtmidterm.getText());
@@ -147,6 +151,12 @@ public class StudentGradeRecord extends JFrame{
 							JOptionPane.showMessageDialog(null, "Please fill in all the fields!");
 							return;
 						}
+
+
+					if (duplicateID()) {
+						JOptionPane.showMessageDialog(null, "This student ID already exits.");
+						return;
+					}
 					
 					
 					int prelimgr = Integer.parseInt(txtprelim.getText());
@@ -320,6 +330,27 @@ public class StudentGradeRecord extends JFrame{
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "Error loading records!" + e.getMessage());
 		}
+	}
+
+
+	private boolean duplicateID() {
+		model.setRowCount(0);
+		File file = new File(FILENAME);
+		if(!file.exists()) return false;
+
+		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+		String line;
+			while((line = br.readLine()) != null) {
+				String[] rows = line.split(DELIMITER);
+				model.addRow(rows);
+
+				if (rows[0].equals(txtID.getText()) return true;
+			}
+			
+		} catch(IOException err) {
+			JOptionPane.showMessageDialog(null, err.getMessage());
+		}
+		return false;
 	}
 	
 	
