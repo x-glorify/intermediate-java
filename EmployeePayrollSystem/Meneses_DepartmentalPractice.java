@@ -112,8 +112,13 @@ public class Meneses_DepartmentalPractice extends JFrame{
 						JOptionPane.showMessageDialog(null, "Pay Date must be in YYYY-MM-DD format.");
 						return;
 					}
+
+					if(duplicatedID()) {
+						JOptionPane.showMessageDialog(null, "This employee ID already exists.");
+						return;
+					}
 					
-					double hours			= Double.parseDouble(txthours.getText());
+					double hours		= Double.parseDouble(txthours.getText());
 					double rate			= Double.parseDouble(txtrate.getText());
 					double totalsalary	= hours * rate;
 					txttotalsalary.setText(String.valueOf(totalsalary));
@@ -362,13 +367,26 @@ public class Meneses_DepartmentalPractice extends JFrame{
 					JOptionPane.showMessageDialog(null, io.getMessage());
 				}
 				
-				
-				
-				
+			
 			}
 	
-	
-	
+
+			private boolean duplicateID() {
+			File file = new File(FILENAME);
+			if (!file.exists()) return false;
+				try (BufferedReafer br = new BufferedReader(new FileReader(FILENAME))) {
+					String line;
+					while((line = br.readLine()) != null) {
+						String[] rows = line.split(DELIMITER);
+						if(rows[0].equals(txtID.getText())) return true;
+					}
+				} catch (IOException err) {
+					JOptionPane.showMessageDialog(null, err/getMessage());
+				}
+
+				return false;
+			}
+ 	
 	
 	
 	
