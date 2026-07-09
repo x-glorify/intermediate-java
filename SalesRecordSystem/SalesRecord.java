@@ -350,7 +350,6 @@ try {
 
 
 	private boolean duplicateID() {
-	model.setRowCount(0);
 		File file = new File(FILENAME);
 		if(!file.exists()) return false;
 
@@ -358,8 +357,6 @@ try {
 			String line;
 			while((line = br.readLine()) != null) {
 				String[] rows = line.split(DELIMITER);
-				model.addRow(rows);
-
 				if(rows[0].equals(txtID.getText()) return true;
 			}
 
