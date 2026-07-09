@@ -110,6 +110,14 @@ public class SalesRecord extends JFrame{
 						JOptionPane.showMessageDialog(null, "Date must be in format YYYY-MM-DD");
 						return;
 					}
+
+					// duplicate check
+
+					if(duplicateID()) {
+						JOptionPane.showMessageDialog(null, "This sales ID already exists.");
+						return;
+						
+					}
 					
 					int price = Integer.parseInt(txtprice.getText());
 					int sold = Integer.parseInt(txtsold.getText());
@@ -331,6 +339,28 @@ try {
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
+	}
+
+
+	private boolean duplicateID() {
+	model.setRowCount(0);
+		File file = new File(FILENAME);
+		if(!file.exists()) return false;
+
+		try(BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+			String line;
+			while((line = br.readLine()) != null) {
+				String[] rows = line.split(DELIMITER);
+				model.addRow(rows);
+
+				if(rows[0].equals(txtID.getText()) return true;
+			}
+
+			
+		} catch (IOException err) {
+			JOptionPane.showMessageDialog(null, err.getMessage());
+		}
+		return false;
 	}
 	
 	
