@@ -5,6 +5,8 @@ import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import java.time.*;
+import java.time.format*;
 public class VehicleRentalSystem extends JFrame{
 
 	private final String FILENAME = "vehiclerent.txt";
@@ -18,7 +20,7 @@ public class VehicleRentalSystem extends JFrame{
 	
 	
 	VehicleRentalSystem() {
-		String[] cols = {"Rental ID", "Customer Name", "Vehicle", "No. of Days", "Daily Rate","Totao", "Date"};
+		String[] cols = {"Rental ID", "Customer Name", "Vehicle", "No. of Days", "Daily Rate","Total", "Date"};
 		model = new DefaultTableModel(cols, 0);
 		table = new JTable(model);
 		table.setFillsViewportHeight(true);
@@ -118,6 +120,8 @@ public class VehicleRentalSystem extends JFrame{
 					JOptionPane.showMessageDialog(null, "Date must be in format YYYY-MM-DD");
 					return;
 				}
+
+					LocalDate.parse(txtdate.getText());
 				
 				if (duplicateIDcheck()) {
 					JOptionPane.showMessageDialog(null, "This ID already exists.");
@@ -128,6 +132,11 @@ public class VehicleRentalSystem extends JFrame{
 				double days = Double.parseDouble(txtdays.getText());
 				double total = rate*days;
 				txttotal.setText(String.valueOf(total));
+
+					if ((rate < 0) || (days <= 0)) {
+					JOptionPane.showMessageDialog(null, "Rate and days must be greater than zero.");
+					return;
+				}
 				
 				Rental rent = new Rental(txtrentalID.getText(),txtcustomer.getText(), txtvehicle.getText(),
 						days, rate, total, txtdate.getText());
@@ -138,6 +147,9 @@ public class VehicleRentalSystem extends JFrame{
 				
 				} catch (NumberFormatException err) {
 					JOptionPane.showMessageDialog(null, "Rate and days must be in numbers only.");
+					return;
+				}  catch (DateTimeParseException err) {
+					JOptionPane.showMessageDialog(null, "Please input valid date.");
 					return;
 				}
 				
@@ -172,6 +184,8 @@ public class VehicleRentalSystem extends JFrame{
 					JOptionPane.showMessageDialog(null, "Date must be in format YYYY-MM-DD");
 					return;
 				}
+
+					LocalDate.parse(txtdate.getText());
 				
 				if (duplicateIDcheck()) {
 					JOptionPane.showMessageDialog(null, "This ID already exists.");
@@ -182,6 +196,11 @@ public class VehicleRentalSystem extends JFrame{
 				double days = Double.parseDouble(txtdays.getText());
 				double total = rate*days;
 				txttotal.setText(String.valueOf(total));
+
+					if ((rate < 0) || (days <= 0)) {
+					JOptionPane.showMessageDialog(null, "Rate and days must be greater than zero.");
+					return;
+				}
 				
 				Rental rent = new Rental(txtrentalID.getText(),txtcustomer.getText(), txtvehicle.getText(),
 						days, rate, total, txtdate.getText());
@@ -191,6 +210,9 @@ public class VehicleRentalSystem extends JFrame{
 				
 				} catch (NumberFormatException err) {
 					JOptionPane.showMessageDialog(null, "Rate and days must be in numbers only.");
+					return;
+				}  catch (DateTimeParseException err) {
+					JOptionPane.showMessageDialog(null, "Please input valid date.");
 					return;
 				}
 				
