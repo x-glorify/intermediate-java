@@ -293,7 +293,10 @@ public class MovieTicket extends JFrame{
 	private void view() {
 		model.setRowCount(0);
 		File file = new File(FILENAME);
-		if(!file.exists()) return;
+		if(!file.exists() || file.length() == 0) {
+			JOptionPane.showMessageDialog(null, "There is currently no recorded data.");
+			return;
+		}
 		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
 			String line;
 			while((line = br.readLine()) != null) {
