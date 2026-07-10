@@ -17,7 +17,7 @@ public class MovieTicket extends JFrame{
 	private JTable table;
 	private DefaultTableModel model;
 	private JScrollPane scroll;
-	private ArrayList<String> records = new ArrayList<>();
+	private ArrayList<String> records;
 	
 	
 	MovieTicket() {
@@ -259,6 +259,7 @@ public class MovieTicket extends JFrame{
 	
 	
 	private void delete() {
+		records = new ArrayList<>();
 		int selectedrow = table.getSelectedRow();
 		int confirm = JOptionPane.showConfirmDialog(null, "Delete this record?", "Confirm",
 					JOptionPane.YES_NO_OPTION);
