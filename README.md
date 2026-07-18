@@ -44,9 +44,3 @@ Welcome to my Intermediate Java Programming repository! This repository contains
 - Medicine Inventory, Sales Record, and Student Grades systems
 
 ---
-
-<div align="center">
-
-*A.Y 2025-2026*
-
-</div>
