@@ -63,7 +63,7 @@ public class Meneses_DepartmentalPractice extends JFrame{
 		txtID			= new JTextField();
 		txtname			= new JTextField();
 		txtposition		= new JTextField();
-		txthours			= new JTextField();
+		txthours		= new JTextField();
 		txtrate			= new JTextField();
 		txttotalsalary	= new JTextField();
 		txttotalsalary.setEditable(false);
@@ -83,7 +83,7 @@ public class Meneses_DepartmentalPractice extends JFrame{
 		JButton btnadd		= new JButton("Add");
 		JButton btnupdate	= new JButton("Update");
 		JButton btndelete	= new JButton("Delete");
-		JButton btnclear		= new JButton("Clear");
+		JButton btnclear	= new JButton("Clear");
 		
 		
 		btnPanel.add(btnadd);
@@ -169,7 +169,7 @@ public class Meneses_DepartmentalPractice extends JFrame{
 					}
 					
 					
-					double hours			= Double.parseDouble(txthours.getText());
+					double hours		= Double.parseDouble(txthours.getText());
 					double rate			= Double.parseDouble(txtrate.getText());
 					double totalsalary	= hours * rate;
 					txttotalsalary.setText(String.valueOf(totalsalary));
@@ -370,7 +370,7 @@ public class Meneses_DepartmentalPractice extends JFrame{
 			
 			}
 	
-
+			// employee ID should be unique to avoid duplicated record
 			private boolean duplicateID() {
 			File file = new File(FILENAME);
 			if (!file.exists()) return false;
