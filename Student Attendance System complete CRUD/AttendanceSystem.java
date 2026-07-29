@@ -193,7 +193,7 @@ public class AttendanceSystem extends JFrame{
 	}
 	
 	private boolean isDuplicate() {
-		model.setRowCount(0);
+		
 		File file = new File(FILENAME);
 		if (!file.exists()) return false;
 		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
